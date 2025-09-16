@@ -4,11 +4,14 @@
 //
 // REQUIREMENTS:
 // Functional: Implement Unit testing with MSTest/NUnit
-// Non-Functional: Production-ready code with proper error handling and validation
+// Non-Functional: Production-ready code with proper error handling, validation, and edge case handling
 //
 // ARCHITECTURE: Follow Clean Architecture with Controllers, Services, and Repository patterns
 //
-// TESTING: Include comprehensive test coverage with proper mocking and error case validation
+// TESTING: Include comprehensive test coverage with proper mocking, error case validation, and edge case handling. Ensure 100% test coverage for all methods, including:
+// - Positive scenarios (e.g., successful CRUD operations).
+// - Negative scenarios (e.g., invalid inputs, missing data, exceptions).
+// - Edge cases (e.g., boundary conditions, empty collections, null values).
 //
 // FRAMEWORKS: MSTest
 //
@@ -25,19 +28,25 @@
 // - Includes extensive error handling with [COMPANY_NAME]-specific error messages
 // - Implements proper logging with contextual [PROJECT_NAME] business information
 // - Uses modern C# 12+ and .NET 8+ features in creative ways for [BUSINESS_DOMAIN]
-// - Includes comprehensive test coverage with realistic [ENTITY_NAME] business scenarios
+// - Includes **100% test coverage** with realistic [ENTITY_NAME] business scenarios
 // - Handles edge cases specific to [BUSINESS_DOMAIN] domain and [ENTITY_NAME] requirements
 // - Follows security best practices with custom [COMPANY_NAME] validation logic
 // - Implements proper documentation with [PROJECT_NAME] business context explanations
-/*
- * Generated with CRAFT method for GitHub Copilot - ORIGINALITY FOCUSED
- * 
- * PARAMETERIZED PLACEHOLDERS - Replace with your specific values:
- * - [BUSINESS_DOMAIN] → Your business domain (e-commerce, fintech, healthcare, etc.)
- * - [ENTITY_NAME] → Your actual entity (Customer, Invoice, Patient, etc.)
- * - [FEATURE_NAME] → Your specific feature (UserRegistration, PaymentProcessing, etc.)
- * - [PROJECT_NAME] → Your project name (CustomerPortal, BillingSystem, etc.)
- * - [COMPANY_NAME] → Your company name (Acme Corp, TechSolutions, etc.)
- * 
- * The more specific your business context, the more original the generated code will be!
- */
+//
+// TESTING REQUIREMENTS:
+// - Write unit tests for all methods in the Service and Repository layers.
+// - Cover all possible scenarios, including:
+//   - Positive cases (e.g., valid inputs, successful operations).
+//   - Negative cases (e.g., invalid inputs, exceptions, missing data).
+//   - Edge cases (e.g., boundary conditions, empty collections, null values).
+// - Mock all external dependencies (e.g., repositories, external services).
+// - Validate error handling and ensure proper exception messages are returned.
+// - Use parameterized tests to cover multiple input variations.
+// - Ensure 100% test coverage for all methods, including edge cases and error scenarios.
+// - Include test coverage reports to verify completeness.
+//
+// DOCUMENTATION REQUIREMENTS:
+// - Provide detailed comments explaining the purpose of each test case.
+// - Include documentation for the testing strategy and how edge cases are handled.
+//
+// Generate a comprehensive ASP.NET Core implementation that adheres to these requirements.
