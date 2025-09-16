@@ -8,8 +8,14 @@
 //
 // ARCHITECTURE: Microservices architecture, SOLID principles adherence
 //
-// TESTING: Integration tests for APIs, Unit tests (80%+ coverage), Security testing (OWASP), Performance and load testing
-
+// TESTING: Include comprehensive test coverage with proper mocking and error case validation. Ensure **100% test coverage** for all components, hooks, services, and pages, including:
+// - Positive scenarios (e.g., successful CRUD operations).
+// - Negative scenarios (e.g., invalid inputs, missing data, exceptions).
+// - Edge cases (e.g., boundary conditions, empty collections, null values).
+// - Tests for all branches, conditions, and paths in the code.
+// - Integration tests for API calls and end-to-end flows.
+// - Security testing (OWASP compliance) and performance/load testing.
+//
 // SCAFFOLDING REQUIREMENTS:
 // - Create modern React 18+ application with TypeScript
 // - Set up proper project structure with src/components/hooks/utils folders
@@ -19,7 +25,7 @@
 // - Include comprehensive testing setup with Jest and React Testing Library
 // - Configure ESLint, Prettier, and pre-commit hooks for code quality
 // - Add performance optimization and PWA capabilities
-////
+//
 // FRAMEWORKS: React 18+, React Router, Redux Toolkit, Zustand
 //
 // ORIGINALITY REQUIREMENTS:
@@ -35,19 +41,20 @@
 // - Includes extensive error handling with [COMPANY_NAME]-specific error messages
 // - Implements proper logging with contextual [PROJECT_NAME] business information
 // - Uses modern JavaScript/TypeScript features in creative ways for [BUSINESS_DOMAIN]
-// - Includes comprehensive test coverage with realistic [ENTITY_NAME] business scenarios
-// - Handles edge cases specific to [BUSINESS_DOMAIN] domain and [ENTITY_NAME] requirements
-// - Follows security best practices with custom [COMPANY_NAME] validation logic
-// - Implements proper documentation with [PROJECT_NAME] business context explanations
-/*
- * Generated with CRAFT method for GitHub Copilot - ORIGINALITY FOCUSED
- * 
- * PARAMETERIZED PLACEHOLDERS - Replace with your specific values:
- * - [BUSINESS_DOMAIN] → Your business domain (e-commerce, fintech, healthcare, etc.)
- * - [ENTITY_NAME] → Your actual entity (Customer, Invoice, Patient, etc.)
- * - [FEATURE_NAME] → Your specific feature (UserRegistration, PaymentProcessing, etc.)
- * - [PROJECT_NAME] → Your project name (CustomerPortal, BillingSystem, etc.)
- * - [COMPANY_NAME] → Your company name (Acme Corp, TechSolutions, etc.)
- * 
- * The more specific your business context, the more original the generated code will be!
- */
+// - Includes **unit tests with 100% test coverage** for all components, hooks, services, and pages, including:
+//   - Positive cases (e.g., valid inputs, successful operations).
+//   - Negative cases (e.g., invalid inputs, exceptions, missing data).
+//   - Edge cases (e.g., boundary conditions, empty collections, null values).
+//   - Tests for all branches, conditions, and paths in the code.
+//   - Tests for all validation rules and error handling scenarios.
+// - Mock all external dependencies (e.g., API calls, services).
+// - Validate error handling and ensure proper exception messages are returned.
+// - Use parameterized tests to cover multiple input variations.
+// - Ensure test coverage reports are generated to verify completeness and highlight untested code.
+//
+// DOCUMENTATION REQUIREMENTS:
+// - Provide detailed comments explaining the purpose of each test case.
+// - Include documentation for the testing strategy, including how edge cases, error scenarios, and boundary conditions are handled.
+// - Include a summary of the test coverage report and highlight how 100% coverage was achieved.
+//
+// Generate a comprehensive React implementation that adheres to these requirements.
