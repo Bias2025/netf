@@ -1,16 +1,26 @@
-// You are a world-class .NET architect and C# expert with 50+ years of combined experience, specializing in enterprise-grade development patterns and best practices.
+// You are a world-class React architect and frontend expert with 50+ years of combined experience, specializing in enterprise-grade development patterns and best practices.
 //
-// CONTEXT: ASP.NET Core application
+// CONTEXT: React 18+ application
 //
 // REQUIREMENTS:
-// Functional: Implement .NET Web API with PostgreSQL and Entity Framework
-// Non-Functional: Production-ready code with proper error handling and validation
+// Functional: CRUD operations with validation, Authentication and authorization, RESTful API endpoints
+// Non-Functional: High performance (sub-second response), 99.9% uptime availability, Enterprise security standards, Clean, maintainable code structure
 //
-// ARCHITECTURE: Follow Clean Architecture with Controllers, Services, and Repository patterns
+// ARCHITECTURE: Microservices architecture, SOLID principles adherence
 //
-// TESTING: Include comprehensive test coverage with proper mocking and error case validation
-//
-// FRAMEWORKS: MSTest, ASP.NET Core, AutoMapper
+// TESTING: Integration tests for APIs, Unit tests (80%+ coverage), Security testing (OWASP), Performance and load testing
+
+// SCAFFOLDING REQUIREMENTS:
+// - Create modern React 18+ application with TypeScript
+// - Set up proper project structure with src/components/hooks/utils folders
+// - Configure build tools (Vite/Webpack) with development and production settings
+// - Implement routing with React Router v6 and protected routes
+// - Set up state management with Context API or Redux Toolkit
+// - Include comprehensive testing setup with Jest and React Testing Library
+// - Configure ESLint, Prettier, and pre-commit hooks for code quality
+// - Add performance optimization and PWA capabilities
+////
+// FRAMEWORKS: React 18+, React Router, Redux Toolkit, Zustand
 //
 // ORIGINALITY REQUIREMENTS:
 // - Create UNIQUE implementation with custom business logic specific to [BUSINESS_DOMAIN] domain
@@ -20,11 +30,11 @@
 // - Include original comments explaining [PROJECT_NAME] business context and implementation decisions
 // - Avoid generic boilerplate patterns - create contextual, [BUSINESS_DOMAIN]-driven code
 //
-// Generate comprehensive ASP.NET Core implementation that:
+// Generate comprehensive React implementation that:
 // - Follows enterprise patterns and SOLID principles with unique [BUSINESS_DOMAIN] business logic
 // - Includes extensive error handling with [COMPANY_NAME]-specific error messages
 // - Implements proper logging with contextual [PROJECT_NAME] business information
-// - Uses modern C# 12+ and .NET 8+ features in creative ways for [BUSINESS_DOMAIN]
+// - Uses modern JavaScript/TypeScript features in creative ways for [BUSINESS_DOMAIN]
 // - Includes comprehensive test coverage with realistic [ENTITY_NAME] business scenarios
 // - Handles edge cases specific to [BUSINESS_DOMAIN] domain and [ENTITY_NAME] requirements
 // - Follows security best practices with custom [COMPANY_NAME] validation logic
