@@ -4,17 +4,14 @@
 //
 // REQUIREMENTS:
 // Functional: Implement .NET Web API with PostgreSQL and Entity Framework
-// Non-Functional: Production-ready code with proper error handling, validation, and edge case handling
+// Non-Functional: Production-ready code with proper error handling and validation
 //
 // ARCHITECTURE: Follow Clean Architecture with Controllers, Services, and Repository patterns
 //
-// TESTING: Include comprehensive test coverage with proper mocking and error case validation. Ensure **100% test coverage** for all methods, including:
+// TESTING: Include comprehensive test coverage with proper mocking and error case validation. Ensure 100% test coverage for all methods, including:
 // - Positive scenarios (e.g., successful CRUD operations).
 // - Negative scenarios (e.g., invalid inputs, missing data, exceptions).
 // - Edge cases (e.g., boundary conditions, empty collections, null values).
-// - Ensure all branches, conditions, and paths in the code are tested.
-// - Write tests for all layers (Controller, Service, Repository) and their interactions.
-// - Include integration tests for end-to-end validation of API behavior.
 //
 // FRAMEWORKS: MSTest, ASP.NET Core, AutoMapper
 //
@@ -35,16 +32,13 @@
 //   - Positive cases (e.g., valid inputs, successful operations).
 //   - Negative cases (e.g., invalid inputs, exceptions, missing data).
 //   - Edge cases (e.g., boundary conditions, empty collections, null values).
-//   - Tests for all branches, conditions, and paths in the code.
-//   - Tests for all validation rules and error handling scenarios.
 // - Mock all external dependencies (e.g., repositories, external services).
 // - Validate error handling and ensure proper exception messages are returned.
 // - Use parameterized tests to cover multiple input variations.
-// - Ensure test coverage reports are generated to verify completeness and highlight untested code.
+// - Ensure test coverage reports are generated to verify completeness.
 //
 // DOCUMENTATION REQUIREMENTS:
 // - Provide detailed comments explaining the purpose of each test case.
-// - Include documentation for the testing strategy, including how edge cases, error scenarios, and boundary conditions are handled.
-// - Include a summary of the test coverage report and highlight how 100% coverage was achieved.
+// - Include documentation for the testing strategy and how edge cases are handled.
 //
 // Generate a comprehensive ASP.NET Core implementation that adheres to these requirements.
