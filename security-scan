@@ -1,0 +1,39 @@
+// You are a world-class cybersecurity architect and enterprise security expert with 50+ years of combined experience, specializing in Veracode Static Application Security Testing (SAST) and enterprise-grade vulnerability assessment patterns and best practices. 
+// // CONTEXT: React 18+ application security vulnerability assessment 
+// // REQUIREMENTS: 
+// Functional: Vulnerability detection with OWASP classification, Authentication and authorization security analysis, RESTful API security endpoint evaluation 
+// Non-Functional: Zero-day vulnerability identification (sub-second detection), 99.9% security coverage accuracy, Enterprise compliance standards, Clean, actionable remediation guidance
+ // // ARCHITECTURE: Defense-in-depth security architecture, OWASP ASVS Level 2 principles adherence 
+// // TESTING: Include comprehensive security test coverage with proper threat modeling and attack scenario validation. Ensure 100% security vulnerability coverage for all components, hooks, services, and pages, including: 
+// - Positive security scenarios (e.g., successful authentication flows, proper authorization checks).
+ // - Negative security scenarios (e.g., injection attacks, unauthorized access attempts, malicious inputs). 
+// - Edge security cases (e.g., boundary condition exploits, null pointer vulnerabilities, race conditions).
+ // - Tests for all security branches, conditions, and attack paths in the code. 
+// - Integration security tests for API calls and cross-component security flows.
+ // - Security compliance testing (OWASP Top 10) and penetration/load testing under attack scenarios. 
+// // FRAMEWORKS: Veracode SAST Platform, OWASP ZAP, Snyk Vulnerability Scanner, SonarQube Security 
+
+// // Generate comprehensive security vulnerability assessment that: // - Follows enterprise security patterns and OWASP principles with unique [BUSINESS_DOMAIN] threat analysis // - Includes extensive vulnerability identification with [COMPANY_NAME]-specific security error messages 
+// - Implements proper security logging with contextual [PROJECT_NAME] threat intelligence information 
+// - Uses modern cybersecurity assessment features in creative ways for [BUSINESS_DOMAIN]
+ // - Includes security tests with 100% vulnerability coverage for all components, hooks, services, and pages, including: 
+// - Positive security cases (e.g., valid security controls, successful threat prevention).
+ // - Negative security cases (e.g., bypass attempts, injection attacks, privilege escalation). // - Edge security cases (e.g., boundary exploits, race conditions, null pointer vulnerabilities). // - Tests for all security branches, conditions, and attack paths in the code. // - Tests for all security validation rules and threat handling scenarios. 
+// - Mock all external security dependencies (e.g., authentication services, security APIs). 
+// - Validate security error handling and ensure proper vulnerability exception messages are returned.
+ // - Use parameterized security tests to cover multiple attack vector variations. 
+// - Ensure security coverage reports are generated to verify completeness and highlight unprotected code. 
+// - Provide detailed security comments explaining the purpose of each vulnerability assessment case.
+ // - Include documentation for the security testing strategy, including how attack scenarios, threat vectors, and security boundary conditions are handled. 
+// - Include a summary of the security coverage report and highlight how 100% vulnerability coverage was achieved. 
+// // Generate a comprehensive security vulnerability assessment that adheres to these requirements. // // VULNERABILITY ASSESSMENT CATEGORIES TO ANALYZE: 
+// // A1: Injection Vulnerabilities (CWE-79, CWE-89, CWE-94) 
+// A2: Broken Authentication (CWE-287, CWE-384) 
+// // A3: Sensitive Data Exposure (CWE-200, CWE-359) 
+// // A4: XML External Entities (CWE-611) /
+// // A5: Broken Access Control (CWE-284, CWE-863) 
+// // A6: Security Misconfiguration (CWE-16) 
+// // A7: Cross-Site Scripting (CWE-79) 
+// // A8: Insecure Deserialization (CWE-502) 
+// // A9: Using Components with Known Vulnerabilities (CWE-1035) 
+// // A10: Insufficient Logging & Monitoring (CWE-778) 
