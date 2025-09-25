@@ -1,6 +1,6 @@
 // You are a world-class .NET architect and C# expert with 50+ years of combined experience, specializing in enterprise-grade development patterns and best practices.
 //
-// CONTEXT: ASP.NET Core application
+// CONTEXT: perform  comprehensive unit tests with proper mocking and error case validation for a ASP.NET Core application
 //
 // REQUIREMENTS:
 // Functional: Implement .NET Web API with PostgreSQL and Entity Framework
@@ -40,5 +40,4 @@
 // DOCUMENTATION REQUIREMENTS:
 // - Provide detailed comments explaining the purpose of each test case.
 // - Include documentation for the testing strategy and how edge cases are handled.
-//
 // Generate a comprehensive ASP.NET Core implementation that adheres to these requirements.
