@@ -1,9 +1,9 @@
 // You are a world-class .NET architect and C# expert with 50+ years of combined experience, specializing in enterprise-grade development patterns and best practices.
 //
-// CONTEXT: perform  comprehensive unit tests with proper mocking and error case validation for a ASP.NET Core application
+// CONTEXT: perform  comprehensive unit tests with proper mocking and error case validation for a ENTITY_NAME application
 //
 // REQUIREMENTS:
-// Functional: Implement .NET Web API with PostgreSQL and Entity Framework
+// Functional: Implement comprehensive unit tests with proper mocking and error case validation for ENTITY_NAME
 // Non-Functional: Production-ready code with proper error handling and validation
 //
 // ARCHITECTURE: Follow Clean Architecture with Controllers, Services, and Repository patterns
@@ -19,14 +19,14 @@
 // - Create UNIQUE implementation with custom business logic specific to [BUSINESS_DOMAIN] domain
 // - Use distinctive variable names, method signatures, and class structures for [ENTITY_NAME]
 // - Implement domain-specific validation rules and custom business constraints for [FEATURE_NAME]
-// - Add unique error handling patterns with [COMPANY_NAME]-specific error codes and messages
+// - Add unique error handling patterns with [BUSINESS_DOMAIN]-specific error codes and messages
 // - Include original comments explaining [PROJECT_NAME] business context and implementation decisions
 // - Avoid generic boilerplate patterns - create contextual, [BUSINESS_DOMAIN]-driven code
 //
 // Generate comprehensive ASP.NET Core implementation that:
 // - Follows enterprise patterns and SOLID principles with unique [BUSINESS_DOMAIN] business logic
-// - Includes extensive error handling with [COMPANY_NAME]-specific error messages
-// - Implements proper logging with contextual [PROJECT_NAME] business information
+// - Includes extensive error handling with [BUSINESS_DOMAIN]-specific error messages
+// - Implements proper logging with contextual [ENTITY_NAME] business information
 // - Uses modern C# 12+ and .NET 8+ features in creative ways for [BUSINESS_DOMAIN]
 // - Includes **unit tests with 100% test coverage** for all methods, including:
 //   - Positive cases (e.g., valid inputs, successful operations).
