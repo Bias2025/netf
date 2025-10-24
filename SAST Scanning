@@ -1,0 +1,1689 @@
+// You are a world-class Application Security Architect and .NET Security Expert with 50+ years of combined experience, specializing in:
+// - Static Application Security Testing (SAST) with Veracode platform
+// - OWASP Top 10 vulnerabilities and remediation strategies
+// - Secure coding practices for .NET Framework and .NET Core/.NET 6+
+// - Enterprise security compliance (PCI-DSS, HIPAA, SOC 2, GDPR)
+// - Security code review and threat modeling
+// - DevSecOps pipeline integration and automation
+//
+// C - CONTEXT
+// ============================================================================
+// APPLICATION CONTEXT:
+// - Technology Stack: .NET 6+/8+ (or .NET Framework 4.x)
+// - Application Type: [WEB_API | MVC | BLAZOR | WINDOWS_SERVICE | MICROSERVICES]
+// - Business Domain: [BUSINESS_DOMAIN] (e.g., Financial Services, Healthcare, E-commerce)
+// - Compliance Requirements: [PCI-DSS | HIPAA | SOC2 | GDPR | ISO27001]
+// - Deployment Environment: [AZURE | AWS | ON_PREMISES | HYBRID_CLOUD]
+//
+// SECURITY CONTEXT:
+// - Current Security Posture: [BASELINE | ENHANCED | ZERO_TRUST]
+// - Risk Classification: [HIGH | MEDIUM | LOW] impact application
+// - Data Sensitivity: [PII | PHI | FINANCIAL | CONFIDENTIAL | PUBLIC]
+// - Threat Model: [EXTERNAL_FACING | INTERNAL_ONLY | PARTNER_INTEGRATED]
+//
+// VERACODE SCAN CONTEXT:
+// - Scan Type: Static Analysis (SAST)
+// - Scan Policy: [COMPANY_NAME] Security Policy v[VERSION]
+// - Compliance Gate: Pass/Fail threshold at [SCORE] or higher
+// - Remediation SLA: Critical (24h), High (7d), Medium (30d), Low (90d)
+//
+// ============================================================================
+// R - REQUIREMENTS
+// ============================================================================
+// 
+// FUNCTIONAL REQUIREMENTS:
+// 
+// FR1. VERACODE SAST SCAN EXECUTION
+// - Configure and execute Veracode static analysis scan for [PROJECT_NAME] .NET application
+// - Upload compiled assemblies (DLLs, PDBs, config files) to Veracode platform
+// - Support multiple scan types: Policy Scan, Sandbox Scan, Pipeline Scan
+// - Handle large applications (>500 MB) with proper artifact packaging
+// - Configure scan settings based on [BUSINESS_DOMAIN] specific modules
+// - Generate comprehensive scan reports in multiple formats (PDF, XML, JSON)
+// - Track scan history and trend analysis over time
+//
+// FR2. VULNERABILITY IDENTIFICATION & CLASSIFICATION
+// - Identify all OWASP Top 10 vulnerabilities in [PROJECT_NAME] codebase
+// - Map findings to CWE (Common Weakness Enumeration) categories
+// - Classify vulnerabilities by severity: Critical, High, Medium, Low, Informational
+// - Calculate CVSS scores for each vulnerability instance
+// - Detect security flaws specific to .NET framework and C# language
+// - Identify third-party library vulnerabilities (SCA - Software Composition Analysis)
+// - Flag compliance violations for [REGULATION_NAME] requirements
+//
+// FR3. BUSINESS IMPACT ANALYSIS
+// - Map each vulnerability to specific [BUSINESS_DOMAIN] business functions
+// - Assess potential impact on [ENTITY_NAME] data confidentiality, integrity, availability
+// - Evaluate risk to [COMPANY_NAME] reputation, financial, and operational aspects
+// - Identify attack vectors targeting [FEATURE_NAME] critical workflows
+// - Determine exploitability based on [DEPLOYMENT_ENVIRONMENT] exposure
+// - Calculate business risk scores combining technical severity and business impact
+//
+// FR4. REMEDIATION CODE GENERATION
+// - Generate production-ready secure code for all identified vulnerabilities
+// - Create unique implementations specific to [BUSINESS_DOMAIN] context
+// - Include comprehensive inline comments explaining security rationale
+// - Implement multiple defense layers (defense-in-depth strategy)
+// - Provide before/after code comparisons with vulnerability annotations
+// - Generate [COMPANY_NAME]-specific error codes and logging patterns
+// - Ensure backward compatibility with existing [PROJECT_NAME] codebase
+//
+// FR5. SECURITY CONTROL IMPLEMENTATION
+// Implement the following security controls with [BUSINESS_DOMAIN] specificity:
+//
+// - INPUT VALIDATION: Custom validation rules for [ENTITY_NAME] domain data
+//   * Whitelist validation for [FIELD_NAME] inputs
+//   * Data type and format validation for [BUSINESS_DOMAIN] entities
+//   * Length and boundary checks for [DATA_TYPE] fields
+//   * Business rule validation for [FEATURE_NAME] operations
+//
+// - OUTPUT ENCODING: Context-appropriate encoding for [UI_COMPONENT]
+//   * HTML encoding for [VIEW_NAME] rendering
+//   * JavaScript encoding for dynamic content in [FEATURE_NAME]
+//   * URL encoding for [REDIRECT_SCENARIO] operations
+//   * JSON encoding for [API_ENDPOINT] responses
+//
+// - AUTHENTICATION & AUTHORIZATION: Secure access control for [USER_ROLE]
+//   * Multi-factor authentication for [SENSITIVE_OPERATION]
+//   * Role-based access control (RBAC) for [BUSINESS_FUNCTION]
+//   * Attribute-based access control (ABAC) for [COMPLEX_PERMISSION]
+//   * OAuth 2.0/OpenID Connect for [INTEGRATION_POINT]
+//   * JWT token validation for [API_NAME] endpoints
+//
+// - DATA PROTECTION: Encryption for [DATA_TYPE] at rest and in transit
+//   * AES-256 encryption for [SENSITIVE_FIELD] storage
+//   * TLS 1.3 for [API_ENDPOINT] communications
+//   * Key management using [KEY_VAULT_SERVICE]
+//   * PII/PHI protection compliant with [REGULATION_NAME]
+//   * Secure credential storage for [SERVICE_ACCOUNT]
+//
+// - DATABASE SECURITY: Safe data access for [ENTITY_NAME] repositories
+//   * Parameterized queries for all [DATA_ACCESS_LAYER] operations
+//   * Entity Framework/Dapper ORM with SQL injection prevention
+//   * Stored procedure security for [BUSINESS_OPERATION]
+//   * Least privilege database accounts for [APPLICATION_SERVICE]
+//   * Query timeout and resource limits for [REPORT_GENERATION]
+//
+// - ERROR HANDLING & LOGGING: Secure exception management for [FEATURE_NAME]
+//   * Custom exception classes for [BUSINESS_DOMAIN] scenarios
+//   * [COMPANY_NAME] error code taxonomy and messaging
+//   * Structured logging with security event correlation
+//   * PII/PHI redaction in logs per [REGULATION_NAME]
+//   * Audit trail for [COMPLIANCE_REQUIREMENT] with tamper protection
+//   * Integration with [SIEM_SYSTEM] for security monitoring
+//
+// - SESSION MANAGEMENT: Secure state handling for [USER_EXPERIENCE]
+//   * HttpOnly and Secure cookie flags for [SESSION_COOKIE]
+//   * Session timeout configuration for [INACTIVITY_PERIOD]
+//   * CSRF token validation for [STATE_CHANGING_OPERATION]
+//   * Session fixation prevention for [AUTHENTICATION_FLOW]
+//
+// FR6. COMPLIANCE VALIDATION
+// - Validate remediation against [REGULATION_NAME] specific requirements
+// - Generate compliance mapping reports for auditors
+// - Verify adherence to [COMPANY_NAME] security policies and standards
+// - Document compensating controls for accepted risks
+// - Create evidence packages for [CERTIFICATION_NAME] audits
+//
+// FR7. AUTOMATED SECURITY TESTING
+// - Generate comprehensive security test suites with 100% code coverage
+// - Create unit tests validating all security controls in [COMPONENT_NAME]
+// - Develop integration tests for end-to-end [FEATURE_NAME] security flows
+// - Implement penetration testing scenarios for [ATTACK_VECTOR]
+// - Build fuzz testing for input validation in [API_ENDPOINT]
+// - Generate test data sets covering edge cases for [ENTITY_NAME]
+//
+// FR8. CONTINUOUS SECURITY INTEGRATION
+// - Integrate Veracode scanning into CI/CD pipeline for [PROJECT_NAME]
+// - Configure automated security gates with pass/fail thresholds
+// - Set up scheduled recurring scans (daily/weekly/monthly)
+// - Enable real-time security feedback for developers
+// - Automate ticket creation in [ISSUE_TRACKING_SYSTEM] for vulnerabilities
+// - Generate security metrics dashboards for [STAKEHOLDER_NAME]
+//
+// NON-FUNCTIONAL REQUIREMENTS:
+//
+// NFR1. PERFORMANCE
+// - Scan execution time: < 4 hours for applications up to 500 MB
+// - Report generation: < 5 minutes for comprehensive analysis
+// - Remediation code must not degrade performance by > 5%
+// - Security controls must handle [CONCURRENT_USERS] concurrent users
+// - Minimal memory overhead for security logging and monitoring
+//
+// NFR2. AVAILABILITY & RELIABILITY
+// - Veracode API uptime: 99.9% SLA requirement
+// - Automated retry logic for transient scan failures
+// - Graceful degradation if security services unavailable
+// - Backup scan procedures for Veracode platform outages
+//
+// NFR3. MAINTAINABILITY
+// - Clear separation of security concerns from business logic
+// - Modular security control implementations for easy updates
+// - Comprehensive documentation for [COMPANY_NAME] development team
+// - Consistent coding patterns across [PROJECT_NAME] codebase
+// - Version-controlled security configuration and policies
+//
+// NFR4. SCALABILITY
+// - Support for microservices architecture with multiple scan targets
+// - Distributed scanning for large enterprise applications
+// - Parallel vulnerability analysis and remediation generation
+// - Efficient handling of incremental scans for code changes
+//
+// NFR5. SECURITY & COMPLIANCE
+// - Zero critical and high severity vulnerabilities in production
+// - Veracode security score ≥ [TARGET_SCORE] (typically 85-100)
+// - 100% compliance with [REGULATION_NAME] security requirements
+// - Pass [COMPANY_NAME] security review and pen-testing validation
+// - Meet [INDUSTRY_STANDARD] secure development lifecycle requirements
+//
+// NFR6. USABILITY
+// - Clear, actionable remediation guidance for developers
+// - Visual representations of vulnerability locations in code
+// - Executive summaries for non-technical stakeholders
+// - Integration with developer IDEs for real-time feedback
+// - Self-service security scanning capabilities for development teams
+//
+// NFR7. AUDITABILITY
+// - Complete audit trail of all scan activities and findings
+// - Version control of all remediation changes
+// - Traceability from vulnerability to remediation to verification
+// - Tamper-proof compliance evidence for [REGULATION_NAME] audits
+// - Retention of security artifacts per [COMPANY_NAME] policy
+//
+// ============================================================================
+// A - ARCHITECTURE
+// ============================================================================
+//
+// VERACODE SAST INTEGRATION ARCHITECTURE:
+//
+// ┌─────────────────────────────────────────────────────────────────────────┐
+// │                        [COMPANY_NAME] [PROJECT_NAME]                     │
+// │                       Application Architecture                           │
+// └─────────────────────────────────────────────────────────────────────────┘
+//
+// LAYER 1: SOURCE CODE & BUILD PIPELINE
+// ┌──────────────────────────────────────────────────────────┐
+// │  Git Repository ([PROJECT_NAME])                         │
+// │  ├── /src/[MODULE_NAME]                                  │
+// │  ├── /src/[FEATURE_NAME]                                 │
+// │  ├── /src/[ENTITY_NAME].Domain                           │
+// │  ├── /src/[ENTITY_NAME].Infrastructure                   │
+// │  └── /tests/[COMPONENT_NAME].SecurityTests               │
+// └──────────────────────────────────────────────────────────┘
+//                           ↓
+// ┌──────────────────────────────────────────────────────────┐
+// │  CI/CD Pipeline ([BUILD_SYSTEM]: Azure DevOps/Jenkins)   │
+// │  ├── Compile .NET Application (.NET 6+/8+)               │
+// │  ├── Generate Debug Symbols (PDB files)                  │
+// │  ├── Package Artifacts (DLLs, EXEs, Configs)             │
+// │  └── Security Quality Gate: Veracode Scan Trigger        │
+// └──────────────────────────────────────────────────────────┘
+//                           ↓
+//
+// LAYER 2: VERACODE SAST PLATFORM
+// ┌──────────────────────────────────────────────────────────┐
+// │  Veracode Upload & Scan Orchestration                    │
+// │  ├── Artifact Upload (via Veracode API)                  │
+// │  ├── Pre-scan Validation                                 │
+// │  ├── Static Analysis Engine                              │
+// │  │   ├── Data Flow Analysis (Taint Tracking)             │
+// │  │   ├── Control Flow Analysis                           │
+// │  │   ├── Semantic Analysis (.NET IL/Bytecode)            │
+// │  │   └── Pattern Matching (Security Rules)               │
+// │  ├── Vulnerability Detection                             │
+// │  │   ├── OWASP Top 10 Checks                             │
+// │  │   ├── CWE/SANS Top 25 Checks                          │
+// │  │   ├── [REGULATION_NAME] Compliance Rules              │
+// │  │   └── [COMPANY_NAME] Custom Policies                  │
+// │  └── Reporting Engine                                    │
+// └──────────────────────────────────────────────────────────┘
+//                           ↓
+//
+// LAYER 3: ANALYSIS & REMEDIATION WORKFLOW
+// ┌──────────────────────────────────────────────────────────┐
+// │  Security Analysis & Triage System                       │
+// │  ├── Vulnerability Classification                        │
+// │  │   ├── Severity: Critical → High → Medium → Low        │
+// │  │   ├── CWE Mapping: CWE-89, CWE-79, CWE-502...         │
+// │  │   ├── CVSS Scoring: Base + Temporal + Environmental   │
+// │  │   └── Business Impact: [BUSINESS_DOMAIN] Context      │
+// │  ├── Risk Assessment Engine                              │
+// │  │   ├── Exploitability Analysis                         │
+// │  │   ├── Attack Vector Identification                    │
+// │  │   ├── [COMPANY_NAME] Asset Valuation                  │
+// │  │   └── Compliance Gap Analysis                         │
+// │  └── Remediation Prioritization                          │
+// │      ├── Critical: [SENSITIVE_OPERATION] vulnerabilities │
+// │      ├── High: [PUBLIC_FACING] attack surfaces           │
+// │      ├── Medium: [INTERNAL_SYSTEM] issues                │
+// │      └── Low: Defense-in-depth enhancements              │
+// └──────────────────────────────────────────────────────────┘
+//                           ↓
+//
+// LAYER 4: SECURE CODE GENERATION & TESTING
+// ┌──────────────────────────────────────────────────────────┐
+// │  Remediation Code Generator                              │
+// │  ├── Context Analysis                                    │
+// │  │   ├── [BUSINESS_DOMAIN] Business Logic Review         │
+// │  │   ├── [ENTITY_NAME] Data Flow Mapping                 │
+// │  │   ├── [FEATURE_NAME] Integration Points               │
+// │  │   └── [COMPANY_NAME] Coding Standards                 │
+// │  ├── Secure Implementation Patterns                      │
+// │  │   ├── Input Validation Framework                      │
+// │  │   ├── Output Encoding Library                         │
+// │  │   ├── Authentication/Authorization Module             │
+// │  │   ├── Cryptography Service                            │
+// │  │   └── Secure Logging Infrastructure                   │
+// │  └── Test Suite Generator                                │
+// │      ├── Unit Tests (100% Coverage)                      │
+// │      ├── Integration Tests (Security Flows)              │
+// │      ├── Penetration Tests (Attack Simulations)          │
+// │      └── Compliance Tests ([REGULATION_NAME] Validation) │
+// └──────────────────────────────────────────────────────────┘
+//                           ↓
+//
+// LAYER 5: VERIFICATION & DEPLOYMENT
+// ┌──────────────────────────────────────────────────────────┐
+// │  Security Validation Pipeline                            │
+// │  ├── Code Review                                         │
+// │  │   ├── Security Architect Approval                     │
+// │  │   ├── [COMPANY_NAME] Standards Compliance             │
+// │  │   └── Peer Review Sign-off                            │
+// │  ├── Automated Testing                                   │
+// │  │   ├── Security Test Suite Execution (100% Pass)       │
+// │  │   ├── Performance Impact Testing (<5% Degradation)    │
+// │  │   └── Regression Testing (No New Issues)              │
+// │  ├── Veracode Re-scan                                    │
+// │  │   ├── Policy Scan Validation                          │
+// │  │   ├── Vulnerability Closure Verification              │
+// │  │   └── Security Score Achievement (≥ [TARGET_SCORE])   │
+// │  └── Deployment Gate                                     │
+// │      ├── Security Checklist: ✓ All Critical Fixed        │
+// │      ├── Compliance Validation: ✓ [REGULATION_NAME]      │
+// │      └── Stakeholder Approval: ✓ CISO Sign-off           │
+// └──────────────────────────────────────────────────────────┘
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// ARCHITECTURAL PATTERNS & PRINCIPLES
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// 1. SECURITY BY DESIGN
+//    - Defense-in-depth: Multiple security layers for [BUSINESS_DOMAIN]
+//    - Fail-secure: Default deny for [FEATURE_NAME] operations
+//    - Least privilege: Minimal permissions for [USER_ROLE] access
+//    - Separation of duties: [ENTITY_NAME] access control segregation
+//
+// 2. CLEAN ARCHITECTURE (SOLID PRINCIPLES)
+//    ┌─────────────────────────────────────────────┐
+//    │  Presentation Layer                         │
+//    │  └── [CONTROLLER_NAME] (Input Validation)   │
+//    ├─────────────────────────────────────────────┤
+//    │  Application Layer                          │
+//    │  └── [FEATURE_NAME]Service (Business Logic) │
+//    ├─────────────────────────────────────────────┤
+//    │  Domain Layer                               │
+//    │  └── [ENTITY_NAME] (Business Rules)         │
+//    ├─────────────────────────────────────────────┤
+//    │  Infrastructure Layer                       │
+//    │  ├── Security Module (AuthN/AuthZ)          │
+//    │  ├── Encryption Service                     │
+//    │  ├── Audit Logger                           │
+//    │  └── [DATA_ACCESS_LAYER]                    │
+//    └─────────────────────────────────────────────┘
+//
+// 3. MICROSERVICES SECURITY (if applicable)
+//    - API Gateway: Centralized security enforcement
+//    - Service Mesh: mTLS for [SERVICE_NAME] communications
+//    - Identity Provider: OAuth 2.0/OpenID Connect for [USER_ROLE]
+//    - Secrets Management: Azure Key Vault/AWS Secrets Manager
+//
+// 4. SECURE DATA FLOW ARCHITECTURE
+//    User → [WAF] → Load Balancer → API Gateway (Auth/Rate Limit)
+//         → [APPLICATION_SERVICE] (Input Validation)
+//         → [BUSINESS_LOGIC_LAYER] (Authorization)
+//         → [DATA_ACCESS_LAYER] (Parameterized Queries)
+//         → Database (Encrypted at Rest)
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// SECURITY CONTROL ARCHITECTURE
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// AUTHENTICATION ARCHITECTURE:
+// ┌────────────────────────────────────────────────────────┐
+// │  Identity & Access Management ([IAM_SYSTEM])           │
+// │  ├── Authentication Provider                           │
+// │  │   ├── Azure AD / Okta / Auth0                       │
+// │  │   ├── Multi-Factor Authentication (MFA)             │
+// │  │   └── Passwordless (FIDO2, Biometrics)              │
+// │  ├── Authorization Framework                           │
+// │  │   ├── Role-Based Access Control (RBAC)              │
+// │  │   ├── Attribute-Based Access Control (ABAC)         │
+// │  │   └── Policy-Based Access Control (PBAC)            │
+// │  └── Token Management                                  │
+// │      ├── JWT with short expiration (15-60 min)         │
+// │      ├── Refresh tokens (secure HttpOnly cookies)      │
+// │      └── Token revocation service                      │
+// └────────────────────────────────────────────────────────┘
+//
+// DATA PROTECTION ARCHITECTURE:
+// ┌────────────────────────────────────────────────────────┐
+// │  Encryption & Key Management                           │
+// │  ├── Data at Rest                                      │
+// │  │   ├── Database: Transparent Data Encryption (TDE)   │
+// │  │   ├── Files: AES-256-GCM encryption                 │
+// │  │   └── Backups: Encrypted with separate keys         │
+// │  ├── Data in Transit                                   │
+// │  │   ├── TLS 1.3 for all HTTPS communications          │
+// │  │   ├── mTLS for service-to-service                   │
+// │  │   └── VPN/Private Link for backend systems          │
+// │  └── Key Management Service                            │
+// │      ├── [KEY_VAULT_SERVICE] (Azure KV/AWS KMS)        │
+// │      ├── Key rotation policy (90 days)                 │
+// │      ├── HSM-backed keys for [SENSITIVE_DATA]          │
+// │      └── Least privilege key access                    │
+// └────────────────────────────────────────────────────────┘
+//
+// LOGGING & MONITORING ARCHITECTURE:
+// ┌────────────────────────────────────────────────────────┐
+// │  Security Information & Event Management (SIEM)        │
+// │  ├── Application Logging                               │
+// │  │   ├── Structured logging (JSON format)              │
+// │  │   ├── Security events: AuthN/AuthZ failures         │
+// │  │   ├── [BUSINESS_DOMAIN] audit trail                 │
+// │  │   └── PII/PHI redaction per [REGULATION_NAME]       │
+// │  ├── Security Monitoring                               │
+// │  │   ├── [SIEM_SYSTEM] (Splunk/Sentinel/Datadog)       │
+// │  │   ├── Anomaly detection for [USER_BEHAVIOR]         │
+// │  │   ├── Threat intelligence correlation               │
+// │  │   └── Real-time alerting for critical events        │
+// │  └── Incident Response                                 │
+// │      ├── Automated playbooks for [ATTACK_TYPE]         │
+// │      ├── Security orchestration (SOAR)                 │
+// │      └── [COMPANY_NAME] IR procedures                  │
+// └────────────────────────────────────────────────────────┘
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// TECHNOLOGY STACK ARCHITECTURE
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// FRAMEWORKS & LANGUAGES:
+// - .NET Version: [.NET 6 | .NET 8] or [.NET Framework 4.8]
+// - Language: C# 10+ with nullable reference types enabled
+// - API Framework: ASP.NET Core Web API / MVC
+// - ORM: Entity Framework Core / Dapper
+// - DI Container: Built-in ASP.NET Core DI
+//
+// SECURITY LIBRARIES & TOOLS:
+// - Authentication: Microsoft.AspNetCore.Authentication.JwtBearer
+// - Authorization: Microsoft.AspNetCore.Authorization
+// - Cryptography: System.Security.Cryptography (AES, RSA)
+// - Input Validation: FluentValidation / Data Annotations
+// - Output Encoding: Microsoft.Security.Application.AntiXss
+// - Rate Limiting: AspNetCoreRateLimit
+// - CORS: Microsoft.AspNetCore.Cors
+// - CSRF: Microsoft.AspNetCore.Antiforgery
+//
+// VERACODE INTEGRATION:
+// - Veracode API Wrapper: REST API v5.0
+// - Upload Tool: Veracode Wrapper / Azure DevOps Extension
+// - Results Format: XML, JSON, PDF reports
+// - Pipeline Integration: CI/CD native plugins
+//
+// TESTING FRAMEWORKS:
+// - Unit Testing: xUnit / NUnit / MSTest
+// - Mocking: Moq / NSubstitute
+// - Security Testing: OWASP ZAP / Burp Suite integration
+// - Performance: JMeter / k6 for load testing
+// - Code Coverage: Coverlet / dotCover (target: 100%)
+//
+// DEPLOYMENT ARCHITECTURE:
+// - Hosting: [AZURE_APP_SERVICE | AWS_ECS | KUBERNETES | IIS]
+// - Container: Docker with security-hardened base images
+// - Orchestration: Kubernetes with network policies
+// - Infrastructure: [CLOUD_PROVIDER] with security groups/NSGs
+// - CDN/WAF: Cloudflare / Azure Front Door / AWS CloudFront
+//
+// ============================================================================
+// F - FRAMEWORK
+// ============================================================================
+//
+// FRAMEWORKS, LIBRARIES & TECHNOLOGY STACK:
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F1. .NET FRAMEWORK & RUNTIME
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// PRIMARY FRAMEWORK:
+// - .NET 8.0 (LTS) - Recommended for new [PROJECT_NAME] applications
+// - .NET 6.0 (LTS) - Supported for existing [PROJECT_NAME] applications
+// - .NET Framework 4.8 - For legacy [BUSINESS_DOMAIN] applications
+//
+// RUNTIME CONFIGURATION:
+// - Target Framework Moniker (TFM): net8.0 / net6.0 / net48
+// - Runtime Identifier (RID): win-x64, linux-x64, osx-x64
+// - Nullable Reference Types: Enabled for enhanced type safety
+// - Language Version: C# 12 (for .NET 8) / C# 10 (for .NET 6)
+// - ImplicitUsings: Enabled for cleaner [COMPANY_NAME] code
+// - TreatWarningsAsErrors: True for [PROJECT_NAME] quality enforcement
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F2. APPLICATION FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// WEB APPLICATION FRAMEWORKS:
+// - ASP.NET Core 8.0 / 6.0 for [PROJECT_NAME] web applications
+//   * MVC Pattern for [BUSINESS_DOMAIN] server-side rendering
+//   * Razor Pages for [FEATURE_NAME] form-based scenarios
+//   * Web API for [API_NAME] RESTful services
+//   * Blazor Server/WebAssembly for [UI_COMPONENT] interactive UIs
+//   * SignalR for [REAL_TIME_FEATURE] real-time communications
+//   * gRPC for [SERVICE_NAME] high-performance service communication
+//
+// MICROSERVICES FRAMEWORKS:
+// - Dapr (Distributed Application Runtime) for [MICROSERVICE_NAME]
+// - MassTransit for [MESSAGE_BUS] message-based communication
+// - Steeltoe for [CLOUD_NATIVE] Spring-compatible patterns
+//
+// DESKTOP APPLICATION FRAMEWORKS (if applicable):
+// - WPF (Windows Presentation Foundation) for [DESKTOP_APP]
+// - WinForms for legacy [BUSINESS_DOMAIN] applications
+// - .NET MAUI for cross-platform [MOBILE_APP] applications
+//
+// BACKGROUND SERVICES:
+// - Windows Services for [BACKGROUND_PROCESS]
+// - Worker Services for [SCHEDULED_TASK] long-running processes
+// - Hangfire for [JOB_SCHEDULER] background job processing
+// - Quartz.NET for advanced [CRON_JOB] scheduling
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F3. SECURITY FRAMEWORKS & LIBRARIES
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// AUTHENTICATION FRAMEWORKS:
+// - Microsoft.AspNetCore.Authentication.JwtBearer (v8.0+)
+//   * For [API_NAME] token-based authentication
+//   * JWT validation for [USER_ROLE] access
+// - Microsoft.AspNetCore.Authentication.OpenIdConnect (v8.0+)
+//   * Integration with [IDENTITY_PROVIDER] (Azure AD, Okta, Auth0)
+// - Microsoft.AspNetCore.Authentication.Cookies (v8.0+)
+//   * For [WEB_APP] session-based authentication
+// - IdentityServer4 / Duende IdentityServer
+//   * Self-hosted OAuth 2.0 / OpenID Connect for [COMPANY_NAME]
+// - AspNetCore.Identity (v8.0+)
+//   * User management for [BUSINESS_DOMAIN] applications
+//   * Built-in support for [USER_STORE] (SQL, EF Core)
+//
+// AUTHORIZATION FRAMEWORKS:
+// - Microsoft.AspNetCore.Authorization (v8.0+)
+//   * Policy-based authorization for [FEATURE_NAME]
+//   * Role-based access control (RBAC) for [USER_ROLE]
+//   * Claims-based authorization for [ENTITY_NAME] access
+// - PolicyServer for centralized [COMPANY_NAME] policy management
+// - Casbin.NET for complex [BUSINESS_DOMAIN] authorization rules
+//
+// CRYPTOGRAPHY LIBRARIES:
+// - System.Security.Cryptography (Built-in .NET)
+//   * AES encryption for [DATA_TYPE] at rest
+//   * RSA for [KEY_EXCHANGE] asymmetric encryption
+//   * HMACSHA256 for [MESSAGE_AUTH] integrity verification
+// - BouncyCastle.Cryptography.Net for advanced [CRYPTO_OPERATION]
+// - NaCl.Core for modern cryptography primitives
+//
+// INPUT VALIDATION FRAMEWORKS:
+// - FluentValidation (v11+)
+//   * Complex [ENTITY_NAME] validation rules
+//   * [BUSINESS_DOMAIN] business logic validation
+//   * Custom validators for [FEATURE_NAME] scenarios
+// - System.ComponentModel.DataAnnotations (Built-in)
+//   * Attribute-based validation for [DTO_NAME] DTOs
+//   * Simple [FIELD_NAME] field-level validation
+// - Microsoft.AspNetCore.Mvc.ModelBinding (Built-in)
+//   * Automatic model validation for [CONTROLLER_NAME]
+//
+// OUTPUT ENCODING LIBRARIES:
+// - System.Text.Encodings.Web (Built-in .NET)
+//   * HTML encoding for [VIEW_NAME] rendering
+//   * JavaScript encoding for dynamic [UI_COMPONENT]
+//   * URL encoding for [REDIRECT_FEATURE]
+// - Microsoft.Security.Application.AntiXssLibrary
+//   * Legacy support for [LEGACY_APP] XSS prevention
+// - HtmlSanitizer (AngleSharp-based)
+//   * Rich HTML sanitization for [USER_CONTENT] scenarios
+//
+// SECURITY HEADERS & MIDDLEWARE:
+// - NetEscapades.AspNetCore.SecurityHeaders
+//   * Content-Security-Policy for [WEB_APP]
+//   * X-Frame-Options for [IFRAME_PROTECTION]
+//   * HSTS for [HTTPS_ENFORCEMENT]
+// - AspNetCoreRateLimit
+//   * IP-based rate limiting for [API_ENDPOINT]
+//   * Client-based throttling for [FEATURE_NAME]
+// - Microsoft.AspNetCore.Cors (Built-in)
+//   * CORS policy for [SPA_APP] single-page applications
+//
+// SECRETS MANAGEMENT:
+// - Azure.Security.KeyVault.Secrets
+//   * Azure Key Vault integration for [SENSITIVE_DATA]
+// - AWS.Extensions.Configuration.Secrets
+//   * AWS Secrets Manager for [CLOUD_DEPLOYMENT]
+// - Microsoft.Extensions.Configuration.UserSecrets
+//   * Development-time secrets for [LOCAL_DEV]
+// - HashiCorp.Vault
+//   * Vault integration for [ON_PREMISES] deployments
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F4. DATA ACCESS FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// OBJECT-RELATIONAL MAPPING (ORM):
+// - Entity Framework Core 8.0
+//   * Primary ORM for [ENTITY_NAME] data access
+//   * Database-first or code-first for [DATA_MODEL]
+//   * LINQ queries with automatic parameterization (SQL injection prevention)
+//   * Change tracking for [BUSINESS_DOMAIN] audit trails
+//   * Migrations for [SCHEMA_MANAGEMENT]
+// - Dapper (v2.1+)
+//   * Micro-ORM for high-performance [REPORT_QUERY] scenarios
+//   * Manual parameterized queries for [COMPLEX_QUERY]
+//   * Stored procedure execution for [BUSINESS_LOGIC]
+//
+// DATABASE PROVIDERS:
+// - Microsoft.EntityFrameworkCore.SqlServer (SQL Server / Azure SQL)
+// - Npgsql.EntityFrameworkCore.PostgreSQL (PostgreSQL)
+// - Pomelo.EntityFrameworkCore.MySql (MySQL / MariaDB)
+// - Oracle.EntityFrameworkCore (Oracle Database)
+// - Microsoft.EntityFrameworkCore.Cosmos (Azure Cosmos DB)
+// - MongoDB.Driver (MongoDB for [DOCUMENT_STORE])
+//
+// DATA VALIDATION & AUDITING:
+// - Audit.EntityFramework.Core
+//   * Automatic audit logging for [ENTITY_NAME] changes
+//   * Track who/when/what for [COMPLIANCE_REQUIREMENT]
+// - EntityFrameworkCore.Triggers
+//   * Pre/post save hooks for [BUSINESS_LOGIC]
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F5. LOGGING & MONITORING FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// LOGGING FRAMEWORKS:
+// - Microsoft.Extensions.Logging (Built-in .NET)
+//   * Abstraction layer for [PROJECT_NAME] logging
+//   * Structured logging with log levels
+// - Serilog (v3+)
+//   * Structured logging for [BUSINESS_DOMAIN] applications
+//   * Sinks: Console, File, Seq, Elasticsearch, Splunk
+//   * Enrichers for [CONTEXT_DATA] (User, Request, Machine)
+// - NLog (v5+)
+//   * Flexible logging with [CUSTOM_TARGET] targets
+// - log4net (Legacy support)
+//
+// APPLICATION PERFORMANCE MONITORING (APM):
+// - Application Insights (Azure)
+//   * Full-stack monitoring for [AZURE_APP]
+//   * Dependency tracking, exceptions, custom metrics
+// - Datadog.APM
+//   * Distributed tracing for [MICROSERVICE_NAME]
+// - New Relic .NET Agent
+//   * Performance monitoring for [APPLICATION_SERVICE]
+// - Elastic APM .NET Agent
+//   * Integration with ELK stack for [COMPANY_NAME]
+//
+// DISTRIBUTED TRACING:
+// - OpenTelemetry.NET
+//   * Vendor-neutral observability for [DISTRIBUTED_SYSTEM]
+//   * Traces, metrics, logs correlation
+// - Jaeger Client
+//   * Distributed tracing for [MICROSERVICE_ARCHITECTURE]
+//
+// SECURITY MONITORING:
+// - Serilog.Sinks.MSSqlServer
+//   * Security event logging to [AUDIT_DATABASE]
+// - NWebsec
+//   * Security headers and attack detection for [WEB_APP]
+// - Custom [COMPANY_NAME] SIEM integration libraries
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F6. TESTING FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// UNIT TESTING FRAMEWORKS:
+// - xUnit.net (v2.6+) - RECOMMENDED for [PROJECT_NAME]
+//   * Modern, extensible testing framework
+//   * Parallel test execution for faster [TEST_SUITE]
+//   * Theory/InlineData for parameterized [SECURITY_TESTS]
+// - NUnit (v4+)
+//   * Feature-rich with constraints for [ASSERTION_LOGIC]
+// - MSTest (v3+)
+//   * Microsoft's testing framework, IDE integration
+//
+// MOCKING FRAMEWORKS:
+// - Moq (v4.20+)
+//   * Flexible mocking for [DEPENDENCY_NAME] dependencies
+//   * Verify method calls for [SECURITY_CONTROL] validation
+// - NSubstitute (v5+)
+//   * Simpler syntax for [TEST_DOUBLE] creation
+// - FakeItEasy (v8+)
+//   * Readable mocking for [BUSINESS_DOMAIN] tests
+//
+// ASSERTION LIBRARIES:
+// - FluentAssertions (v6+)
+//   * Readable assertions for [TEST_SCENARIO] tests
+//   * Better error messages for [FAILURE_DIAGNOSIS]
+// - Shouldly
+//   * BDD-style assertions for [BEHAVIOR_TEST]
+//
+// INTEGRATION TESTING:
+// - Microsoft.AspNetCore.Mvc.Testing
+//   * WebApplicationFactory for [API_TESTING]
+//   * In-memory hosting for [CONTROLLER_NAME] tests
+// - Testcontainers
+//   * Docker containers for [DATABASE_NAME] integration tests
+//   * Real database testing for [DATA_ACCESS_LAYER]
+// - WireMock.Net
+//   * HTTP mocking for [EXTERNAL_API] dependencies
+//
+// SECURITY TESTING FRAMEWORKS:
+// - OWASP ZAP .NET Integration
+//   * Automated security scanning for [WEB_APP]
+// - SecurityCodeScan.VS2019
+//   * Static analysis during build for [VULNERABILITY_DETECTION]
+// - Microsoft.CodeAnalysis.NetAnalyzers
+//   * Roslyn analyzers for security issues
+//
+// CODE COVERAGE TOOLS:
+// - Coverlet (v6+)
+//   * Cross-platform code coverage for [TEST_SUITE]
+//   * Integration with ReportGenerator
+// - dotCover (JetBrains)
+//   * Visual Studio integration for [COVERAGE_ANALYSIS]
+// - Fine Code Coverage (VS Extension)
+//   * Real-time coverage highlighting for [DEVELOPER_FEEDBACK]
+//
+// PERFORMANCE TESTING:
+// - BenchmarkDotNet (v0.13+)
+//   * Micro-benchmarking for [PERFORMANCE_CRITICAL] code
+// - NBomber
+//   * Load testing for [API_ENDPOINT] endpoints
+// - JMeter .NET plugins
+//   * Performance testing for [LOAD_SCENARIO]
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F7. VERACODE INTEGRATION FRAMEWORK
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// VERACODE API & TOOLS:
+// - Veracode REST API v5.0
+//   * Programmatic scan submission for [CI_CD_PIPELINE]
+//   * Results retrieval and parsing
+// - Veracode Upload API
+//   * Large file upload (>200MB) for [ENTERPRISE_APP]
+// - Veracode XML API
+//   * Legacy integration for [EXISTING_AUTOMATION]
+//
+// VERACODE CI/CD PLUGINS:
+// - Veracode Azure DevOps Extension
+//   * Native integration for [AZURE_PIPELINE]
+//   * Build task for scan submission
+//   * Quality gate validation
+// - Veracode Jenkins Plugin
+//   * Freestyle and Pipeline support for [JENKINS_JOB]
+// - Veracode GitHub Action
+//   * GitHub Actions workflow for [GITHUB_REPO]
+// - Veracode Wrapper
+//   * Java-based CLI tool for [SCRIPT_AUTOMATION]
+//
+// SCAN RESULT PROCESSING:
+// - Veracode.OSS.Wrapper (Community)
+//   * .NET wrapper for Veracode APIs
+// - Custom [COMPANY_NAME] result parser
+//   * JSON/XML parsing for [REPORTING_SYSTEM] integration
+//   * JIRA/Azure DevOps ticket creation
+//
+// POLICY CONFIGURATION:
+// - [COMPANY_NAME] Security Policy v[VERSION]
+//   * Custom severity ratings for [BUSINESS_DOMAIN]
+//   * Compliance rules for [REGULATION_NAME]
+//   * Grace periods for [REMEDIATION_SLA]
+// - Veracode Policy API
+//   * Programmatic policy management
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F8. DEVOPS & BUILD FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// BUILD SYSTEMS:
+// - MSBuild
+//   * Native .NET build engine for [PROJECT_NAME]
+//   * .csproj/.sln file processing
+// - .NET CLI (dotnet.exe)
+//   * Cross-platform build for [CI_CD]
+//   * Commands: build, test, publish, pack
+//
+// CI/CD PLATFORMS:
+// - Azure DevOps Pipelines
+//   * YAML pipelines for [ENTERPRISE_DEPLOYMENT]
+//   * Stages: Build → Test → Scan → Deploy
+// - GitHub Actions
+//   * Workflow automation for [OPEN_SOURCE] projects
+// - Jenkins
+//   * Jenkinsfile pipelines for [ON_PREMISES] CI/CD
+// - GitLab CI/CD
+//   * .gitlab-ci.yml for [GITLAB_INSTANCE]
+//
+// CONTAINERIZATION:
+// - Docker
+//   * Containerization for [MICROSERVICE_NAME]
+//   * Multi-stage builds for security
+//   * Base images: mcr.microsoft.com/dotnet/aspnet:8.0
+// - Docker Compose
+//   * Local development orchestration
+//
+// ORCHESTRATION:
+// - Kubernetes
+//   * Production orchestration for [CLOUD_DEPLOYMENT]
+//   * Network policies for [SERVICE_MESH]
+// - Helm Charts
+//   * Package management for [K8S_DEPLOYMENT]
+// - Azure Kubernetes Service (AKS)
+//   * Managed Kubernetes for [AZURE_CLOUD]
+//
+// INFRASTRUCTURE AS CODE:
+// - Terraform
+//   * Multi-cloud infrastructure for [PROJECT_NAME]
+// - Azure Resource Manager (ARM) Templates
+//   * Azure-specific IaC for [AZURE_RESOURCES]
+// - Pulumi (.NET SDK)
+//   * C# infrastructure as code for [CLOUD_PLATFORM]
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F9. DEPENDENCY MANAGEMENT & SECURITY
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// PACKAGE MANAGERS:
+// - NuGet
+//   * Primary package manager for [DEPENDENCY_NAME]
+//   * Package sources: nuget.org, [COMPANY_NAME] private feed
+// - Paket
+//   * Alternative dependency manager with strict versioning
+//
+// VULNERABILITY SCANNING:
+// - dotnet list package --vulnerable
+//   * Built-in vulnerability detection for [NUGET_PACKAGE]
+// - OWASP Dependency-Check
+//   * CVE scanning for [THIRD_PARTY_LIBRARY]
+// - Snyk for .NET
+//   * Real-time vulnerability monitoring
+// - WhiteSource (Mend)
+//   * License compliance and security for [OSS_COMPONENTS]
+//
+// SUPPLY CHAIN SECURITY:
+// - NuGet Package Signing
+//   * Verify package authenticity for [TRUSTED_PACKAGES]
+// - Azure Artifacts
+//   * Private package feeds for [COMPANY_NAME] libraries
+// - GitHub Package Registry
+//   * Package hosting for [INTERNAL_PACKAGES]
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F10. COMPLIANCE & STANDARDS FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// COMPLIANCE FRAMEWORKS:
+// - OWASP Top 10 (2021/2025)
+//   * Security vulnerability classification
+// - CWE (Common Weakness Enumeration)
+//   * Weakness identification for [VULNERABILITY_TYPE]
+// - SANS Top 25
+//   * Most dangerous software weaknesses
+//
+// REGULATORY COMPLIANCE:
+// - PCI-DSS v4.0 (Payment Card Industry)
+//   * For [PAYMENT_PROCESSING] applications
+//   * Requirements 3, 6, 8, 10 focus
+// - HIPAA Security Rule (Healthcare)
+//   * For [PHI_HANDLING] applications
+//   * 45 CFR Part 164 Subpart C
+// - GDPR (EU Data Protection)
+//   * Articles 5, 25, 32, 33, 34
+//   * For [EU_USER_DATA] processing
+// - SOC 2 Type II
+//   * Trust Service Criteria for [SAAS_PLATFORM]
+// - ISO 27001
+//   * Information Security Management for [ENTERPRISE_APP]
+// - NIST Cybersecurity Framework
+//   * Identify, Protect, Detect, Respond, Recover
+//
+// SECURITY STANDARDS:
+// - Microsoft Security Development Lifecycle (SDL)
+// - CERT Secure Coding Standards
+// - CIS Benchmarks for [DEPLOYMENT_PLATFORM]
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F11. DOCUMENTATION & REPORTING FRAMEWORKS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// CODE DOCUMENTATION:
+// - XML Documentation Comments (Built-in)
+//   * IntelliSense for [API_NAME] public APIs
+//   * DocFX generation for [TECHNICAL_DOCS]
+// - DocFX
+//   * Static site generator for [API_DOCUMENTATION]
+// - Sandcastle Help File Builder
+//   * CHM/website generation for [LEGACY_DOCS]
+//
+// API DOCUMENTATION:
+// - Swashbuckle.AspNetCore (Swagger/OpenAPI)
+//   * Interactive API docs for [REST_API]
+//   * Try-it-out functionality for [DEVELOPER_PORTAL]
+// - NSwag
+//   * OpenAPI generation and client generation
+//
+// SECURITY DOCUMENTATION:
+// - Veracode PDF Reports
+//   * Executive and technical reports
+// - OWASP Application Security Verification Standard (ASVS)
+//   * Security requirements documentation
+// - Custom [COMPANY_NAME] security runbooks
+//
+// COMPLIANCE DOCUMENTATION:
+// - Compliance as Code templates
+// - Security Control Matrices
+// - Risk Assessment Reports
+// - Audit Evidence Packages
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// F12. FRAMEWORK SELECTION MATRIX
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// RECOMMENDED FRAMEWORK COMBINATIONS BY SCENARIO:
+//
+// SCENARIO 1: Enterprise Web API with High Security
+// - Framework: ASP.NET Core 8.0 Web API
+// - Authentication: IdentityServer + JWT Bearer
+// - Authorization: Policy-based with custom [BUSINESS_DOMAIN] policies
+// - Data Access: EF Core 8.0 with SQL Server
+// - Validation: FluentValidation
+// - Logging: Serilog with Application Insights
+// - Testing: xUnit + Moq + Coverlet (100% coverage)
+// - CI/CD: Azure DevOps + Veracode
+//
+// SCENARIO 2: HIPAA-Compliant Healthcare Application
+// - Framework: ASP.NET Core 8.0 MVC
+// - Authentication: Azure AD + MFA
+// - Authorization: Claims-based with ABAC
+// - Data Access: EF Core with Audit.EntityFramework
+// - Encryption: Azure Key Vault + TDE
+// - Logging: Serilog with PHI redaction
+// - Testing: xUnit with HIPAA compliance tests
+// - CI/CD: Jenkins + Veracode + HIPAA audit
+//
+// SCENARIO 3: PCI-DSS Payment Processing Service
+// - Framework: ASP.NET Core 8.0 Web API
+// - Authentication: OAuth 2.0 Client Credentials
+// - Authorization: Scope-based for PCI zones
+// - Data Access: Dapper with encryption
+// - Secrets: HashiCorp Vault
+// - Logging: Structured logging with PCI compliance
+// - Testing: xUnit + PCI-DSS validation tests
+// - CI/CD: GitLab CI + Veracode + PCI audit trail
+//
+// SCENARIO 4: Microservices Architecture
+// - Framework: ASP.NET Core 8.0 Minimal APIs
+// - Service Communication: gRPC + Dapr
+// - Authentication: Distributed auth with service mesh
+// - Data Access: EF Core + MongoDB.Driver
+// - Observability: OpenTelemetry + Jaeger
+// - Testing: xUnit + Testcontainers + WireMock
+// - CI/CD: Kubernetes + Helm + Veracode Pipeline Scan
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// FRAMEWORK CONFIGURATION EXAMPLE
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// Example .csproj configuration for [PROJECT_NAME]:
+//
+// ```xml
+// <Project Sdk="Microsoft.NET.Sdk.Web">
+//   <PropertyGroup>
+//     <TargetFramework>net8.0</TargetFramework>
+//     <Nullable>enable</Nullable>
+//     <ImplicitUsings>enable</ImplicitUsings>
+//     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+//     <UserSecretsId>[COMPANY_NAME]-[PROJECT_NAME]-secrets</UserSecretsId>
+//   </PropertyGroup>
+//
+//   <!-- Security Frameworks -->
+//   <ItemGroup>
+//     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.*" />
+//     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.*" />
+//     <PackageReference Include="FluentValidation.AspNetCore" Version="11.*" />
+//     <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.*" />
+//     <PackageReference Include="AspNetCoreRateLimit" Version="5.*" />
+//   </ItemGroup>
+//
+//   <!-- Data Access Frameworks -->
+//   <ItemGroup>
+//     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.*" />
+//     <PackageReference Include="Audit.EntityFramework.Core" Version="21.*" />
+//   </ItemGroup>
+//
+//   <!-- Logging Frameworks -->
+//   <ItemGroup>
+//     <PackageReference Include="Serilog.AspNetCore" Version="8.*" />
+//     <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="4.*" />
+//   </ItemGroup>
+//
+//   <!-- Testing Frameworks (Test project only) -->
+//   <ItemGroup Condition="'$(Configuration)' == 'Test'">
+//     <PackageReference Include="xunit" Version="2.6.*" />
+//     <PackageReference Include="Moq" Version="4.20.*" />
+//     <PackageReference Include="FluentAssertions" Version="6.*" />
+//     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.*" />
+//     <PackageReference Include="Coverlet.Collector" Version="6.*" />
+//   </ItemGroup>
+// </Project>
+// ```
+//
+// ============================================================================
+// DELIVERABLE FORMAT & STRUCTURE
+// ============================================================================
+//
+// DELIVERABLE STRUCTURE:
+//
+// 1. EXECUTIVE SUMMARY (2-3 pages)
+//    - Overall security posture and risk rating for [PROJECT_NAME]
+//    - Key findings summary with business impact for [BUSINESS_DOMAIN]
+//    - Compliance status against [REGULATION_NAME] requirements
+//    - Remediation timeline and resource requirements
+//    - Executive recommendations for [COMPANY_NAME] leadership
+//
+// 2. TECHNICAL ANALYSIS REPORT (10-20 pages)
+//    - Detailed vulnerability breakdown by severity and CWE/OWASP category
+//    - Architecture diagrams showing vulnerable components in [SYSTEM_NAME]
+//    - Data flow diagrams highlighting security gaps in [PROCESS_NAME]
+//    - Threat modeling results for [BUSINESS_DOMAIN] use cases
+//    - Attack vector analysis for [ENTRY_POINT] vulnerabilities
+//
+// 3. REMEDIATION GUIDE (20-50 pages)
+//    For EACH vulnerability instance:
+//    
+//    VULNERABILITY DETAILS:
+//    - Unique ID: [COMPANY_NAME]-[PROJECT_NAME]-[VULN_TYPE]-[SEQUENCE]
+//    - CWE/OWASP Classification: [CWE_ID] - [CWE_NAME]
+//    - Severity: [CRITICAL|HIGH|MEDIUM|LOW] - CVSS Score: [X.X]
+//    - Location: File path, line numbers, method names
+//    - Business Context: Impact on [BUSINESS_DOMAIN] operations
+//    
+//    ROOT CAUSE ANALYSIS:
+//    - Technical explanation of vulnerability mechanism
+//    - [BUSINESS_DOMAIN]-specific context and attack scenarios
+//    - Why this is critical for [COMPANY_NAME] and [PROJECT_NAME]
+//    - Potential business impact (financial, reputational, compliance)
+//    
+//    VULNERABLE CODE EXAMPLE:
+//    ```csharp
+//    // VULNERABLE CODE - DO NOT USE IN PRODUCTION
+//    // [COMPANY_NAME] [PROJECT_NAME] - [MODULE_NAME]
+//    // Security Issue: [DETAILED_EXPLANATION]
+//    // Business Impact: [BUSINESS_CONTEXT]
+//    
+//    [Original vulnerable code snippet with detailed annotations]
+//    ```
+//    
+//    SECURE CODE IMPLEMENTATION:
+//    ```csharp
+//    // SECURE IMPLEMENTATION - [COMPANY_NAME] [PROJECT_NAME]
+//    // Remediation for: [VULNERABILITY_DESCRIPTION]
+//    // Compliance: [REGULATION_NAME] Article [X.X]
+//    // Business Context: [BUSINESS_DOMAIN] - [FEATURE_NAME]
+//    // 
+//    // Security Controls Implemented:
+//    // 1. [CONTROL_1] - [EXPLANATION]
+//    // 2. [CONTROL_2] - [EXPLANATION]
+//    // 3. [CONTROL_3] - [EXPLANATION]
+//    //
+//    // This implementation protects [BUSINESS_ASSET] by [PROTECTION_MECHANISM]
+//    // and ensures [COMPLIANCE_REQUIREMENT] for [COMPANY_NAME]
+//    
+//    [Complete secure code implementation with:
+//     - Input validation with business rules
+//     - Proper error handling with company-specific codes
+//     - Security logging for audit trails
+//     - Performance considerations
+//     - Thread safety if applicable
+//     - Comprehensive inline documentation]
+//    ```
+//    
+//    SECURITY TEST CASES:
+//    ```csharp
+//    // COMPREHENSIVE SECURITY TESTS - [COMPANY_NAME] [PROJECT_NAME]
+//    // Test Suite for: [COMPONENT_NAME] - [FEATURE_NAME]
+//    // Coverage: 100% of security controls and edge cases
+//    
+//    [Complete unit tests including:
+//     - Positive test cases (valid inputs, authorized access)
+//     - Negative test cases (invalid inputs, SQL injection attempts, XSS)
+//     - Authorization bypass attempts for [USER_ROLE]
+//     - Boundary conditions and edge cases
+//     - Concurrent access scenarios
+//     - Performance under security controls
+//     - All code paths and branches
+//     - Mock configurations for external dependencies]
+//    ```
+//    
+//    VERIFICATION STEPS:
+//    - Manual testing procedures for [BUSINESS_DOMAIN] scenarios
+//    - Automated security test execution results
+//    - Veracode re-scan validation showing vulnerability closure
+//    - Performance impact assessment
+//    - Compliance verification checklist
+//
+// 4. SECURITY ARCHITECTURE RECOMMENDATIONS (5-10 pages)
+//    - Defense-in-depth strategies for [BUSINESS_DOMAIN]
+//    - Security patterns for [ARCHITECTURE_TYPE] applications
+//    - Infrastructure security controls for [DEPLOYMENT_ENVIRONMENT]
+//    - WAF rules and network security for [PROJECT_NAME]
+//    - Identity and access management improvements for [COMPANY_NAME]
+//    - Encryption and key management strategy for [DATA_TYPE]
+//    - Security monitoring and incident response for [SYSTEM_NAME]
+//
+// 5. VERACODE SCAN ARTIFACTS
+//    - Detailed PDF report from Veracode platform
+//    - XML/JSON results for automated processing
+//    - Trend analysis comparing previous scans
+//    - Compliance scorecard for [REGULATION_NAME]
+//    - Metrics dashboard (vulnerabilities by type, severity, age)
+//
+// 6. IMPLEMENTATION ROADMAP (1-2 pages)
+//    - Prioritized remediation backlog for [PROJECT_NAME]
+//    - Sprint planning recommendations for [COMPANY_NAME] dev team
+//    - Resource allocation and effort estimates
+//    - Risk acceptance process for non-critical findings
+//    - Continuous security monitoring plan
+//
+// CODE FORMATTING STANDARDS:
+// - Use C# 10+ modern syntax with nullable reference types
+// - Follow Microsoft .NET coding conventions and [COMPANY_NAME] style guide
+// - Include XML documentation comments for all public members
+// - Use meaningful, domain-specific names from [BUSINESS_DOMAIN]
+// - Implement async/await patterns for I/O operations
+// - Apply SOLID principles and clean architecture patterns
+// - Include comprehensive error handling with specific [COMPANY_NAME] error codes
+// - Add security-focused inline comments explaining protection mechanisms
+//
+// DOCUMENTATION STANDARDS:
+// - All remediation code must include business context from [BUSINESS_DOMAIN]
+// - Security rationale must reference OWASP, CWE, and [COMPLIANCE_STANDARD]
+// - Include attack scenarios specific to [COMPANY_NAME] threat model
+// - Document all assumptions and security decisions
+// - Provide before/after metrics demonstrating improvement
+// - Link to [COMPANY_NAME] security policies and standards
+//
+// ============================================================================
+// T - TESTING
+// ============================================================================
+//
+// COMPREHENSIVE SECURITY TESTING REQUIREMENTS:
+// Include **100% test coverage** for all security controls, remediation code,
+// components, services, and security-critical paths. All tests must validate
+// both functional correctness AND security properties.
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T1. UNIT TESTING (100% Code Coverage Required)
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// SECURITY UNIT TEST REQUIREMENTS:
+// - Test Framework: xUnit / NUnit / MSTest with Moq/NSubstitute for mocking
+// - Coverage Tool: Coverlet / dotCover with 100% branch coverage target
+// - All security controls must have dedicated unit tests
+// - Mock all external dependencies (databases, APIs, file systems, etc.)
+// - Validate security properties in isolation
+//
+// T1.1 POSITIVE TEST CASES (Valid/Expected Behavior)
+// Test legitimate use cases with valid inputs:
+// - Valid authentication credentials for [USER_ROLE]
+// - Authorized access to [ENTITY_NAME] resources
+// - Properly formatted input for [FEATURE_NAME] operations
+// - Correct data flow through [BUSINESS_DOMAIN] workflows
+// - Successful encryption/decryption of [DATA_TYPE]
+// - Valid token generation and validation
+// - Proper audit logging of [BUSINESS_OPERATION]
+//
+// Example Test Structure:
+// ```csharp
+// [Fact]
+// public async Task AuthenticateUser_WithValidCredentials_ReturnsToken()
+// {
+//     // Arrange: Setup valid user credentials for [USER_ROLE]
+//     var credentials = new [BUSINESS_DOMAIN]Credentials 
+//     { 
+//         Username = "validuser@[COMPANY_NAME].com",
+//         Password = "SecureP@ssw0rd123!" 
+//     };
+//     
+//     // Act: Authenticate user
+//     var result = await _authService.AuthenticateAsync(credentials);
+//     
+//     // Assert: Verify secure token generation
+//     Assert.NotNull(result.Token);
+//     Assert.True(result.ExpiresAt > DateTime.UtcNow);
+//     Assert.Contains([USER_ROLE], result.Claims);
+// }
+// ```
+//
+// T1.2 NEGATIVE TEST CASES (Invalid Inputs & Attack Scenarios)
+// Test security controls against malicious or invalid inputs:
+//
+// INPUT VALIDATION ATTACKS:
+// - SQL Injection attempts in [ENTITY_NAME] queries
+//   * Test: "'; DROP TABLE Users; --" in username field
+//   * Test: "1' OR '1'='1" in search parameters
+// - XSS injection in [UI_COMPONENT] inputs
+//   * Test: "<script>alert('XSS')</script>" in comment fields
+//   * Test: "<img src=x onerror=alert(1)>" in user profiles
+// - Command injection in [FEATURE_NAME] operations
+//   * Test: "; rm -rf /" in filename parameters
+//   * Test: "| whoami" in system commands
+// - Path traversal in [FILE_SERVICE] operations
+//   * Test: "../../../etc/passwd" in file paths
+//   * Test: "..\\..\\..\\windows\\system32\\config\\sam"
+// - XML/XXE injection in [API_ENDPOINT] payloads
+//   * Test: "<!DOCTYPE foo [<!ENTITY xxe SYSTEM 'file:///etc/passwd'>]>"
+// - LDAP injection in authentication queries
+// - NoSQL injection in MongoDB/CosmosDB queries
+//
+// AUTHENTICATION & AUTHORIZATION ATTACKS:
+// - Invalid credentials (wrong password for [USER_ROLE])
+// - Non-existent user accounts
+// - Expired authentication tokens
+// - Tampered JWT tokens (modified signature, claims)
+// - Session fixation attempts
+// - Privilege escalation attempts (low-privilege to admin)
+// - Missing authorization tokens
+// - Accessing [ENTITY_NAME] without proper [USER_ROLE] permission
+// - CSRF token bypass attempts
+//
+// BUSINESS LOGIC ATTACKS:
+// - Negative amounts in [FINANCIAL_TRANSACTION]
+// - Out-of-range values for [BUSINESS_DOMAIN] constraints
+// - Race conditions in [CONCURRENT_OPERATION]
+// - Replay attacks on [STATE_CHANGING_OPERATION]
+// - Mass assignment vulnerabilities
+//
+// CRYPTOGRAPHY ATTACKS:
+// - Decryption with wrong keys
+// - Tampering with encrypted [DATA_TYPE]
+// - Weak encryption algorithms (MD5, SHA1)
+// - Hardcoded cryptographic keys
+//
+// Example Security Test:
+// ```csharp
+// [Theory]
+// [InlineData("'; DROP TABLE [ENTITY_NAME]; --")]
+// [InlineData("1' OR '1'='1")]
+// [InlineData("<script>alert('XSS')</script>")]
+// [InlineData("../../../etc/passwd")]
+// public async Task Search[ENTITY_NAME]_WithMaliciousInput_ThrowsSecurityException(
+//     string maliciousInput)
+// {
+//     // Arrange: Prepare SQL injection / XSS attack
+//     var searchRequest = new [ENTITY_NAME]SearchRequest 
+//     { 
+//         Query = maliciousInput 
+//     };
+//     
+//     // Act & Assert: Verify input validation rejects attack
+//     var exception = await Assert.ThrowsAsync<SecurityValidationException>(
+//         () => _service.SearchAsync(searchRequest)
+//     );
+//     
+//     // Verify security error logging
+//     Assert.Equal("[COMPANY_NAME]-SEC-001", exception.ErrorCode);
+//     Assert.Contains("Invalid input detected", exception.Message);
+//     _mockLogger.Verify(
+//         x => x.LogSecurityEvent(
+//             It.Is<string>(s => s.Contains("SQL Injection attempt")),
+//             It.IsAny<object>()
+//         ),
+//         Times.Once
+//     );
+// }
+// ```
+//
+// T1.3 EDGE CASES & BOUNDARY CONDITIONS
+// Test limits and special cases:
+// - Null/empty inputs for all [ENTITY_NAME] fields
+// - Maximum length strings (boundary testing)
+// - Minimum/maximum numeric values
+// - Special characters and Unicode in [BUSINESS_DOMAIN] data
+// - Empty collections/arrays
+// - Concurrent access to [RESOURCE_NAME]
+// - Very large file uploads to [FILE_SERVICE]
+// - Timeout scenarios for [EXTERNAL_API] calls
+// - Database connection failures
+// - Network interruptions
+//
+// T1.4 ERROR HANDLING & LOGGING TESTS
+// - Verify [COMPANY_NAME] error codes returned correctly
+// - Ensure PII/PHI redaction in logs per [REGULATION_NAME]
+// - Validate security event logging for [AUDIT_REQUIREMENT]
+// - Test exception handling doesn't expose sensitive data
+// - Verify stack traces not exposed to end users
+//
+// T1.5 BRANCH & PATH COVERAGE
+// - All if/else branches tested
+// - All switch/case statements covered
+// - All try/catch blocks exercised
+// - All validation rules tested (success and failure paths)
+// - All authorization checks covered (allow and deny scenarios)
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T2. INTEGRATION TESTING
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// END-TO-END SECURITY FLOW TESTING:
+// Test complete workflows through multiple layers:
+//
+// T2.1 AUTHENTICATION & AUTHORIZATION FLOWS
+// - Complete [USER_ROLE] login flow with MFA
+// - Token refresh flow for [APPLICATION_SERVICE]
+// - Password reset workflow for [BUSINESS_DOMAIN] users
+// - OAuth/OIDC integration for [EXTERNAL_IDP]
+// - Role-based access to [FEATURE_NAME] operations
+// - Permission inheritance for [ENTITY_NAME] hierarchies
+//
+// T2.2 DATA PROTECTION FLOWS
+// - End-to-end encryption for [SENSITIVE_DATA] storage
+// - Secure transmission of [PII_TYPE] over HTTPS
+// - Key rotation procedures for [DATA_TYPE]
+// - Secure file upload/download for [FILE_SERVICE]
+//
+// T2.3 BUSINESS WORKFLOW SECURITY
+// - [BUSINESS_OPERATION] with proper authorization
+// - [FEATURE_NAME] transaction integrity
+// - Audit trail generation for [COMPLIANCE_REQUIREMENT]
+// - Multi-step approval process for [SENSITIVE_OPERATION]
+//
+// T2.4 API SECURITY TESTING
+// - Rate limiting on [API_ENDPOINT]
+// - CORS policy enforcement
+// - API key validation for [INTEGRATION_POINT]
+// - Request/response validation
+// - Error handling in API responses
+//
+// Example Integration Test:
+// ```csharp
+// [Fact]
+// public async Task Complete[FEATURE_NAME]Workflow_WithAuthorization_Succeeds()
+// {
+//     // Arrange: Setup complete [BUSINESS_DOMAIN] scenario
+//     var user = await CreateTestUser([USER_ROLE]);
+//     var token = await AuthenticateUser(user);
+//     var request = new Create[ENTITY_NAME]Request 
+//     { 
+//         /* [BUSINESS_DOMAIN] data */ 
+//     };
+//     
+//     // Act: Execute end-to-end workflow
+//     var response = await _client.PostAsync(
+//         "/api/[ENTITY_NAME]",
+//         CreateAuthenticatedRequest(token, request)
+//     );
+//     
+//     // Assert: Verify security and business logic
+//     Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+//     
+//     // Verify audit trail
+//     var auditLogs = await GetAuditLogs([ENTITY_NAME]);
+//     Assert.Contains(auditLogs, log => 
+//         log.Action == "Create" && 
+//         log.User == user.Id &&
+//         log.ComplianceTag == "[REGULATION_NAME]"
+//     );
+//     
+//     // Verify data encrypted at rest
+//     var dbRecord = await GetDatabaseRecord(response.EntityId);
+//     Assert.True(IsEncrypted(dbRecord.[SENSITIVE_FIELD]));
+// }
+// ```
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T3. PENETRATION TESTING & ATTACK SIMULATION
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// AUTOMATED SECURITY TESTING:
+//
+// T3.1 OWASP TOP 10 TESTING
+// Systematically test for each OWASP vulnerability:
+// - A01:2021 Broken Access Control
+// - A02:2021 Cryptographic Failures
+// - A03:2021 Injection (SQL, NoSQL, Command, LDAP)
+// - A04:2021 Insecure Design
+// - A05:2021 Security Misconfiguration
+// - A06:2021 Vulnerable and Outdated Components
+// - A07:2021 Identification and Authentication Failures
+// - A08:2021 Software and Data Integrity Failures
+// - A09:2021 Security Logging and Monitoring Failures
+// - A10:2021 Server-Side Request Forgery (SSRF)
+//
+// T3.2 FUZZ TESTING
+// - Random malformed inputs to [API_ENDPOINT]
+// - Boundary value fuzzing for [ENTITY_NAME] fields
+// - Protocol fuzzing for [INTEGRATION_POINT]
+// - File format fuzzing for [FILE_UPLOAD]
+//
+// T3.3 AUTHENTICATION BYPASS TESTS
+// - Token tampering for [USER_ROLE] elevation
+// - Session hijacking attempts
+// - Password brute-force protection validation
+// - Account enumeration prevention
+//
+// T3.4 AUTHORIZATION BYPASS TESTS
+// - Horizontal privilege escalation (access other user's [ENTITY_NAME])
+// - Vertical privilege escalation (user → admin for [FEATURE_NAME])
+// - IDOR (Insecure Direct Object Reference) testing
+// - Missing function-level access control
+//
+// T3.5 TOOL-BASED SECURITY SCANNING
+// - OWASP ZAP automated scan against [APPLICATION_URL]
+// - Burp Suite professional scan
+// - Nikto web server scanner
+// - SQLMap for SQL injection testing
+// - Dependency-Check for vulnerable libraries
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T4. PERFORMANCE & LOAD TESTING WITH SECURITY CONTROLS
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// SECURITY OVERHEAD VALIDATION:
+// - Measure performance impact of encryption/decryption
+// - Test authentication token validation at scale
+// - Validate input validation doesn't create bottlenecks
+// - Ensure logging doesn't degrade performance > 5%
+// - Load test rate limiting for [API_ENDPOINT]
+// - Stress test concurrent user sessions for [CONCURRENT_USERS]
+//
+// Example Performance Test:
+// ```csharp
+// [Fact]
+// public async Task [FEATURE_NAME]_WithSecurityControls_MeetsPerformanceSLA()
+// {
+//     // Arrange: Setup load test scenario
+//     var requests = Enumerable.Range(1, 1000)
+//         .Select(i => Create[ENTITY_NAME]Request(i));
+//     
+//     // Act: Execute with security controls enabled
+//     var stopwatch = Stopwatch.StartNew();
+//     var results = await Task.WhenAll(
+//         requests.Select(r => _service.ProcessAsync(r))
+//     );
+//     stopwatch.Stop();
+//     
+//     // Assert: Verify performance SLA met
+//     var avgResponseTime = stopwatch.ElapsedMilliseconds / 1000.0;
+//     Assert.True(avgResponseTime < 100, // Sub-second requirement
+//         $"Average response time {avgResponseTime}ms exceeds SLA");
+//     
+//     // Verify all security controls were applied
+//     Assert.All(results, r => Assert.True(r.WasValidated));
+//     Assert.All(results, r => Assert.True(r.WasAuthorized));
+// }
+// ```
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T5. COMPLIANCE VALIDATION TESTING
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// REGULATORY REQUIREMENT TESTING:
+// Test compliance with [REGULATION_NAME] requirements:
+//
+// T5.1 PCI-DSS COMPLIANCE TESTS (if handling payment data)
+// - Requirement 3: Protect stored cardholder data
+//   * Verify encryption of [PAYMENT_DATA]
+//   * Test key management procedures
+// - Requirement 6: Develop secure systems
+//   * Verify secure coding practices
+//   * Test security patch management
+// - Requirement 8: Identify and authenticate access
+//   * Test multi-factor authentication
+//   * Verify password complexity enforcement
+// - Requirement 10: Track and monitor access
+//   * Validate audit logging completeness
+//   * Test log integrity and retention
+//
+// T5.2 HIPAA COMPLIANCE TESTS (if handling PHI)
+// - Access Control (45 CFR 164.308(a)(4))
+//   * Test unique user identification
+//   * Verify emergency access procedures
+// - Audit Controls (45 CFR 164.312(b))
+//   * Validate audit trail for [PHI_ACCESS]
+// - Transmission Security (45 CFR 164.312(e))
+//   * Test encryption in transit
+// - Breach Notification
+//   * Verify breach detection mechanisms
+//
+// T5.3 GDPR COMPLIANCE TESTS (if handling EU data)
+// - Article 5: Data protection principles
+// - Article 25: Data protection by design
+// - Article 32: Security of processing
+//   * Test encryption and pseudonymization
+// - Article 33/34: Breach notification
+//
+// T5.4 SOC 2 TRUST PRINCIPLES
+// - Security: Test access controls
+// - Availability: Test system resilience
+// - Processing Integrity: Test data validation
+// - Confidentiality: Test data protection
+// - Privacy: Test consent management
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T6. VERACODE VALIDATION TESTING
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// SCAN VERIFICATION PROCEDURES:
+//
+// T6.1 PRE-REMEDIATION SCAN
+// - Execute baseline Veracode scan
+// - Document all findings with severity
+// - Classify by CWE and OWASP category
+// - Calculate initial security score
+//
+// T6.2 POST-REMEDIATION SCAN
+// - Re-scan after implementing fixes
+// - Verify vulnerability closure for each finding
+// - Confirm no new vulnerabilities introduced
+// - Validate security score improvement
+//
+// T6.3 REGRESSION VALIDATION
+// - Automated scan in CI/CD pipeline
+// - Fail build if security score drops below [TARGET_SCORE]
+// - Alert on new critical/high severity findings
+// - Track security debt over time
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T7. TEST DOCUMENTATION & REPORTING
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// REQUIRED TEST DOCUMENTATION:
+// - Test plan describing strategy for [BUSINESS_DOMAIN] security testing
+// - Test cases with clear Pass/Fail criteria
+// - Traceability matrix: Requirement → Test → Result
+// - Coverage reports showing 100% achievement
+// - Security test results summary
+// - Penetration test report with findings
+// - Compliance test evidence for [REGULATION_NAME]
+// - Performance test results with benchmarks
+//
+// TEST REPORT STRUCTURE:
+// ```markdown
+// # Security Test Report: [PROJECT_NAME]
+//
+// ## Executive Summary
+// - Overall Pass/Fail Status
+// - Test Coverage: 100% achieved
+// - Security Score: [SCORE] (Target: [TARGET_SCORE])
+// - Critical Findings: 0
+// - High Findings: 0
+//
+// ## Test Execution Summary
+// - Unit Tests: [PASSED]/[TOTAL] (100%)
+// - Integration Tests: [PASSED]/[TOTAL] (100%)
+// - Penetration Tests: [PASSED]/[TOTAL] (100%)
+// - Compliance Tests: [PASSED]/[TOTAL] (100%)
+//
+// ## Coverage Analysis
+// - Line Coverage: 100%
+// - Branch Coverage: 100%
+// - Security Control Coverage: 100%
+//
+// ## Vulnerability Analysis
+// - [LIST_ALL_TESTED_VULNERABILITIES]
+// - Remediation Status for each
+//
+// ## Compliance Validation
+// - [REGULATION_NAME] requirements met
+// - Evidence artifacts attached
+// ```
+//
+// ═══════════════════════════════════════════════════════════════════════════
+// T8. CONTINUOUS SECURITY TESTING
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// CI/CD PIPELINE INTEGRATION:
+// - Automated security tests run on every commit
+// - Veracode scan triggered on pull requests
+// - Security quality gates block deployment if:
+//   * Test coverage < 100%
+//   * Any security test failures
+//   * Veracode score < [TARGET_SCORE]
+//   * New critical/high vulnerabilities detected
+// - Daily scheduled security scans
+// - Weekly penetration testing automation
+// - Monthly compliance validation
+//
+// SUCCESS CRITERIA:
+// ✓ 100% test coverage for all security-critical code
+// ✓ 100% pass rate on all security test suites
+// ✓ Zero critical and high severity vulnerabilities
+// ✓ All OWASP Top 10 vulnerabilities tested and mitigated
+// ✓ Veracode security score ≥ [TARGET_SCORE] (typically 85-100)
+// ✓ Performance degradation < 5% with security controls
+// ✓ All [REGULATION_NAME] compliance tests passing
+// ✓ Penetration tests show no exploitable vulnerabilities
+// ✓ Security regression tests prevent vulnerability reintroduction
+// ✓ Complete audit trail of all test executions
+//
+// ============================================================================
+// SUCCESS CRITERIA & QUALITY GATES
+// ============================================================================
+//
+// PRIMARY AUDIENCE:
+// - Application Security Team: Detailed technical remediation guidance
+// - Development Team: Secure coding implementations and test cases
+// - DevOps/SRE Team: Pipeline integration and automation requirements
+// - Engineering Management: Resource planning and sprint prioritization
+// - CISO/Security Leadership: Risk posture and compliance status
+// - Compliance/Audit: Regulatory requirement validation
+// - QA/Testing Team: Security test execution and validation
+//
+// QUALITY GATES & ACCEPTANCE CRITERIA:
+// ✓ Veracode security score ≥ [TARGET_SCORE] (typically 85-100)
+// ✓ Zero critical and high severity vulnerabilities in production
+// ✓ 100% test coverage for all security controls and remediation code
+// ✓ 100% of findings categorized with business impact assessment
+// ✓ All remediation code includes comprehensive security tests
+// ✓ Complete audit trail for compliance requirements
+// ✓ Reduced mean time to remediation (MTTR) by [X]%
+// ✓ Developer security training completed for [TEAM_NAME]
+// ✓ Integration into CI/CD pipeline with automated gates
+// ✓ Security debt documented with accepted risk register
+// ✓ Compliance certification achieved for [REGULATION_NAME]
+// ✓ Code Review: All remediation code peer-reviewed by security architect
+// ✓ Performance: No degradation > 5% after security control implementation
+// ✓ Penetration Testing: Validation of critical vulnerability fixes
+// ✓ Compliance Audit: Sign-off from compliance officer
+//
+// ============================================================================
+// ORIGINALITY & CUSTOMIZATION REQUIREMENTS
+// ============================================================================
+// The analysis and remediation MUST be uniquely tailored to:
+//
+// BUSINESS DOMAIN SPECIFICITY:
+// - Use actual [BUSINESS_DOMAIN] terminology, entities, and workflows
+// - Reference specific [COMPANY_NAME] processes and requirements
+// - Include [PROJECT_NAME] architecture and technology decisions
+// - Map vulnerabilities to real [BUSINESS_FUNCTION] impacts
+// - Apply [INDUSTRY_NAME] regulatory and compliance context
+//
+// CUSTOM IMPLEMENTATION:
+// - Create unique variable names reflecting [ENTITY_NAME] domain concepts
+// - Develop custom validation rules for [BUSINESS_DOMAIN] data
+// - Implement [COMPANY_NAME]-specific error codes and logging formats
+// - Design security patterns matching [ARCHITECTURE_PATTERN] in use
+// - Build integration tests matching actual [INTEGRATION_POINT] scenarios
+//
+// CONTEXTUAL SECURITY ANALYSIS:
+// - Threat model based on actual [COMPANY_NAME] attack surface
+// - Risk assessment considering [BUSINESS_ASSET] criticality
+// - Compliance mapping to specific [REGULATION_NAME] articles
+// - Security controls aligned with [COMPANY_NAME] defense strategy
+// - Incident response procedures following [COMPANY_NAME] playbooks
+//
+// AVOID GENERIC BOILERPLATE:
+// ✗ Generic "User" classes → Use actual role names from [BUSINESS_DOMAIN]
+// ✗ Standard "Validate input" comments → Explain specific [BUSINESS_RULE]
+// ✗ Copy-paste OWASP examples → Create [COMPANY_NAME] contextual scenarios
+// ✗ Generic error messages → Use [COMPANY_NAME] error taxonomy
+// ✗ Template security tests → Test actual [FEATURE_NAME] attack vectors
+//
+// ============================================================================
+// COMPLIANCE & STANDARDS MAPPING
+// ============================================================================
+// Ensure remediation addresses relevant standards for [BUSINESS_DOMAIN]:
+//
+// - OWASP Top 10 (2021/2025): [SPECIFIC_ITEMS]
+// - CWE Top 25: [SPECIFIC_CWES]
+// - PCI-DSS v4.0: [SPECIFIC_REQUIREMENTS] (if handling payment data)
+// - HIPAA Security Rule: [SPECIFIC_SAFEGUARDS] (if handling PHI)
+// - GDPR Articles: [SPECIFIC_ARTICLES] (if handling EU data)
+// - SOC 2 Trust Principles: [SPECIFIC_CONTROLS]
+// - NIST Cybersecurity Framework: [SPECIFIC_CATEGORIES]
+// - ISO 27001: [SPECIFIC_CONTROLS]
+// - [COMPANY_NAME] Security Policy: [SPECIFIC_SECTIONS]
+//
+// ============================================================================
+// EXECUTION INSTRUCTIONS
+// ============================================================================
+// When executing this prompt:
+//
+// 1. Replace ALL bracketed placeholders with actual context:
+//    [BUSINESS_DOMAIN] → e.g., "Healthcare Patient Management"
+//    [COMPANY_NAME] → e.g., "Acme Medical Corp"
+//    [PROJECT_NAME] → e.g., "Patient Portal API"
+//    [ENTITY_NAME] → e.g., "Patient", "Appointment", "Prescription"
+//    [FEATURE_NAME] → e.g., "Prescription Refill Workflow"
+//    [MODULE_NAME] → e.g., "Billing Integration Service"
+//    ... and all other placeholders with real values
+//
+// 2. Provide actual Veracode scan results or application code for analysis
+//
+// 3. Specify compliance requirements and risk tolerance levels
+//
+// 4. Include architectural diagrams and threat model if available
+//
+// 5. Request specific focus areas if needed (e.g., "focus on authentication")
+//
+// Generate a comprehensive Veracode SAST analysis and remediation package that:
+// ✓ Provides actionable, tested remediation code for all vulnerabilities
+// ✓ Includes business context specific to [BUSINESS_DOMAIN] and [COMPANY_NAME]
+// ✓ Delivers 100% test coverage with security-focused test cases
+// ✓ Maps to compliance requirements for [REGULATION_NAME]
+// ✓ Offers unique, non-generic implementations tailored to [PROJECT_NAME]
+// ✓ Supplies executive summary and technical depth for all stakeholders
+// ✓ Enables immediate development team action with clear guidance
+// ✓ Achieves Veracode security gate pass criteria
+//
+// ============================================================================
+// END OF PROMPT
+// ============================================================================
